@@ -16,18 +16,27 @@ public class Deck extends CardCollection implements CardSource {
     /**
      * The list of cards in the deck.
      */
-    private final List<Card> aCards = new ArrayList<>();
+    private final static List<Card> aCards = new ArrayList<>();
 
     /**
      * Constructs a new Deck containing all standard playing cards.
      * The deck is initialized with one of each rank and suit combination.
      */
-    public Deck() {
+    private Deck() {
         for (Rank currentRank : Rank.values()) {
             for (Suit currentSuit : Suit.values()) {
                 this.aCards.add(new Card(currentRank, currentSuit));
             }
         }
+    }
+
+    public static Deck getDeck()
+    {
+        if (aCards == null)
+        {
+            List<Card> aCards = new ArrayList<>();
+        }
+        return List<Card> aCards;
     }
 
     /**
