@@ -56,4 +56,13 @@ public class Deck extends CardCollection implements CardSource {
     public Iterator<Card> iterator() {
         return this.aCards.iterator();
     }
+
+    /**
+     *
+     */
+    public void sort(java.util.Comparator<Card> pComparator) {
+        this.aCards.sort(pComparator);
+    }
 }
+
+
