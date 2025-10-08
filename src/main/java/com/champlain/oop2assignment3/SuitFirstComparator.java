@@ -19,7 +19,7 @@ public class SuitFirstComparator implements Comparator<Card> {
         // Compares the suits and return a result
         int suitComparison = pCard1.getSuit().compareTo(pCard2.getSuit());
 
-        if (suitComparison == 0) {
+        if (suitComparison != 0) {
             return suitComparison;
         }
         // Returns a compared Ranks if Suits are the same
