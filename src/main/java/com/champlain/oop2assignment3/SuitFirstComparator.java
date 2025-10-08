@@ -4,9 +4,9 @@ import java.util.Comparator;
 
 /**
  * Implements the Comparator interface.
- * Compares two card objects by Rank then Suit if ranks are equal.
+ * Compares two card objects by Suit then Rank if suits are equal.
  */
-public class RankFirstComparator implements Comparator<Card> {
+public class SuitFirstComparator implements Comparator<Card> {
     /**
      * Compares the two cards for the order.
      * @param pCard1 the first object to be compared.
@@ -16,13 +16,13 @@ public class RankFirstComparator implements Comparator<Card> {
      */
     @Override
     public int compare(Card pCard1, Card pCard2) {
-        // Compares the ranks and return a result
-        int rankComparison = pCard1.getRank().compareTo(pCard2.getRank());
+        // Compares the suits and return a result
+        int suitComparison = pCard1.getSuit().compareTo(pCard2.getSuit());
 
-        if (rankComparison != 0) {
-            return rankComparison;
+        if (suitComparison == 0) {
+            return suitComparison;
         }
-        // Returns a compared Suits if Ranks are the same
-        return pCard1.getSuit().compareTo(pCard2.getSuit());
+        // Returns a compared Ranks if Suits are the same
+        return pCard1.getRank().compareTo(pCard2.getRank());
     }
 }
