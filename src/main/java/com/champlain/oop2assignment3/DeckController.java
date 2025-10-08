@@ -90,7 +90,8 @@ public class DeckController {
             switch (choice) {
                 case "Rank First":
                     // TODO: Replace the following line of code.
-                    this.aDeckTextArea.setText("This does not sort by rank first yet.");
+                    // RankFirstComparator Feature
+                    this.aDeck.sort(new RankFirstComparator());
                     break;
                 case "Suit First":
                     // TODO: Replace the following line of code.
@@ -100,6 +101,8 @@ public class DeckController {
                     this.aDeckTextArea.setText("This should not happen! You messed up.");
                     break;
             }
+            // Updates the UI to show the sorted cards.
+            this.displayCardCollections();
         }
     }
 
