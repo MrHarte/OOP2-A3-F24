@@ -95,6 +95,7 @@ public class DeckController {
                     break;
                 case "Suit First":
                     // TODO: Replace the following line of code.
+                    // SuitFirstComparator Feature
                     this.aDeck.sort(new SuitFirstComparator());
                     break;
                 default:

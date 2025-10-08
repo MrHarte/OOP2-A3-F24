@@ -16,7 +16,7 @@ public class RankFirstComparator implements Comparator<Card> {
      */
     @Override
     public int compare(Card pCard1, Card pCard2) {
-        // Compares the rank and returns a result
+        // Compares the ranks and return a result
         int rankComparison = pCard1.getRank().compareTo(pCard2.getRank());
 
         if (rankComparison != 0) {
