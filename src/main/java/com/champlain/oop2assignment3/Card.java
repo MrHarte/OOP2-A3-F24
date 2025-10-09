@@ -1,5 +1,7 @@
 package com.champlain.oop2assignment3;
 
+import java.util.Objects;
+
 /**
  * Represents a playing card with a specific suit and rank.
  * @implNote This class is immutable, meaning that once a card is created, its suit and rank cannot be changed.
@@ -53,4 +55,19 @@ public class Card {
     public String toString() {
         return this.getRank() + " of " + this.getSuit();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Card)) return false;
+        Card comparedCard = (Card) obj;
+        return this.aRank == comparedCard.aRank && this.aSuit == comparedCard.aSuit;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.aRank, this.aSuit);
+    }
 }
+
+
