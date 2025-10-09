@@ -13,6 +13,12 @@ import java.util.List;
  * </p>
  */
 public class Deck extends CardCollection implements CardSource {
+
+    /**
+     *  The single instance of the Deck object.
+     */
+    private static Deck aDeck = null;
+
     /**
      * The list of cards in the deck.
      */
@@ -22,12 +28,26 @@ public class Deck extends CardCollection implements CardSource {
      * Constructs a new Deck containing all standard playing cards.
      * The deck is initialized with one of each rank and suit combination.
      */
-    public Deck() {
+    private Deck() {
         for (Rank currentRank : Rank.values()) {
             for (Suit currentSuit : Suit.values()) {
                 this.aCards.add(new Card(currentRank, currentSuit));
             }
         }
+    }
+
+    /**
+     * Returns the single instance of the Deck object.
+     *
+     * @return the single instance of the Deck object
+     */
+    public static Deck getDeck()
+    {
+        if (aDeck == null)
+        {
+            aDeck = new Deck();
+        }
+        return aDeck;
     }
 
     /**
