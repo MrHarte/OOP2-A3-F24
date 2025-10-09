@@ -54,7 +54,11 @@ public class Card {
         return this.getRank() + " of " + this.getSuit();
     }
 
-   
+    /**
+     * Compares this card with another to check whether they're equal.
+     * @param obj the object to compare this card to another
+     * @return if the cards have the same rank and suit then the method returns true, otherwise it's false.
+     */
     @Override
     public boolean equals(Object obj) {
         // Check for self-equality
