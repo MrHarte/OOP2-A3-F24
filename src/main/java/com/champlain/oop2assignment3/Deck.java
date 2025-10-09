@@ -13,6 +13,8 @@ import java.util.List;
  * </p>
  */
 public class Deck extends CardCollection implements CardSource {
+
+    private static Deck instance;
     /**
      * The list of cards in the deck.
      */
@@ -28,6 +30,13 @@ public class Deck extends CardCollection implements CardSource {
                 this.aCards.add(new Card(currentRank, currentSuit));
             }
         }
+    }
+
+    public static Deck getInstance() {
+        if (instance == null) {
+            instance = new Deck();
+        }
+        return instance;
     }
 
     /**
