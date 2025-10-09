@@ -53,4 +53,17 @@ public class Card {
     public String toString() {
         return this.getRank() + " of " + this.getSuit();
     }
+
+    /**
+     * Checks if a {@link Card} is the same as another one
+     * @param pObject Other object
+     * @return {@code true} if both Cards have the same suit and rank
+     */
+    @Override
+    public boolean equals (Object pObject) {
+        if (pObject instanceof Card card) {
+            return this.aRank == card.aRank && this.aSuit == card.aSuit;
+        }
+        return false;
+    }
 }

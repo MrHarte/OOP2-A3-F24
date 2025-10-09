@@ -48,7 +48,7 @@ public class DeckController {
     /**
      * The deck of cards being managed by this controller.
      */
-    private final Deck aDeck = new Deck();
+    private final Deck aDeck = Deck.getInstance();
 
     /**
      * The hand of cards being managed by this controller.
@@ -63,8 +63,28 @@ public class DeckController {
         this.displayCardCollections();
         this.aSortStrategyChoiceBox.getItems().addAll("Rank First", "Suit First");
         this.aScoreStrategyChoiceBox.getItems().addAll("Simple Count", "Number Of Aces");
+        testEqualsMethod();
+        testSingleton();
     }
 
+    /**
+     * Tests the equals method of the {@link Card} class. Should print {@code true} in the console if it works.
+     */
+    public void testEqualsMethod() {
+        Card card1 = new Card(Rank.ACE, Suit.CLUBS);
+        Card card2 = new Card(Rank.ACE, Suit.CLUBS);
+        System.out.println("Equals method test result: " + card1.equals(card2));
+    }
+
+	/**
+     * Tests that the {@link Deck} class implements the singleton pattern properly.
+     * Should print {@code true} if that is the case.
+     */
+    public void testSingleton() {
+        Deck deck1 = Deck.getInstance();
+        Deck deck2 = Deck.getInstance();
+        System.out.println("Singleton test result: " + (deck1 == deck2));
+    }
     /**
      * Handles the event when the shuffle button is clicked.
      * Shuffles the deck and updates the displayed card collections.
@@ -89,12 +109,12 @@ public class DeckController {
         } else {
             switch (choice) {
                 case "Rank First":
-                    // TODO: Replace the following line of code.
-                    this.aDeckTextArea.setText("This does not sort by rank first yet.");
+                    this.aDeck.sort(new RankFirstComparator());
+                    this.displayCardCollections();
                     break;
                 case "Suit First":
-                    // TODO: Replace the following line of code.
-                    this.aDeckTextArea.setText("This does not sort by suit first yet.");
+                    this.aDeck.sort(new SuitFirstComparator());
+                    this.displayCardCollections();
                     break;
                 default:
                     this.aDeckTextArea.setText("This should not happen! You messed up.");
