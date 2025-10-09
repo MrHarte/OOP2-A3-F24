@@ -13,10 +13,12 @@ import java.util.List;
  * </p>
  */
 public class Deck extends CardCollection implements CardSource {
+
+    private static Deck aDeck = null;
     /**
      * The list of cards in the deck.
      */
-    private final static List<Card> aCards = new ArrayList<>();
+    private final List<Card> aCards = new ArrayList<>();
 
     /**
      * Constructs a new Deck containing all standard playing cards.
@@ -32,11 +34,11 @@ public class Deck extends CardCollection implements CardSource {
 
     public static Deck getDeck()
     {
-        if (aCards == null)
+        if (aDeck == null)
         {
-            List<Card> aCards = new ArrayList<>();
+            aDeck = new Deck();
         }
-        return List<Card> aCards;
+        return aDeck;
     }
 
     /**
