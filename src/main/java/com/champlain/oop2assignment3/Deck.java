@@ -13,6 +13,8 @@ import java.util.List;
  * </p>
  */
 public class Deck extends CardCollection implements CardSource {
+    // Singleton instance
+    private static Deck instance;
     /**
      * The list of cards in the deck.
      */
