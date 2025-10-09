@@ -45,6 +45,31 @@ public class Card {
     }
 
     /**
+     * Checks if this card is equal to another object.
+     * Two cards are equal if they have the same rank and suit.
+     *
+     * @param obj the object to compare with
+     * @return true if the cards have the same rank and suit, false otherwise
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Card other = (Card) obj;
+        return aRank == other.aRank && aSuit == other.aSuit;
+    }
+
+    /**
+     * Returns a hash code value for the card.
+     * This ensures that equal cards have the same hash code.
+     *
+     * @return the hash code of the card
+     */
+    @Override
+    public int hashCode() {
+        return 31 * aRank.hashCode() + aSuit.hashCode();
+    }
+    /**
      * Returns a string representation of this card.
      *
      * @return a string in the format "Rank of Suit" (e.g., "Ace of Hearts")
