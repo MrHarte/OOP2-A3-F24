@@ -60,6 +60,16 @@ public class Card {
     }
 
     /**
+     * Returns a hash code value for the card.
+     * This ensures that equal cards have the same hash code.
+     *
+     * @return the hash code of the card
+     */
+    @Override
+    public int hashCode() {
+        return 31 * aRank.hashCode() + aSuit.hashCode();
+    }
+    /**
      * Returns a string representation of this card.
      *
      * @return a string in the format "Rank of Suit" (e.g., "Ace of Hearts")
