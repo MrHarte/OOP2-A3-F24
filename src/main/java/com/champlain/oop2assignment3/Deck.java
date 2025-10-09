@@ -54,6 +54,12 @@ public class Deck extends CardCollection implements CardSource {
         return this.aCards.iterator();
     }
 
+    /**
+     * This method sorts the list of card objects according to the order induced
+     * by the specified {@code Comparator}.
+     * @param comparator to determine the order of the cards
+     * @see Card
+     */
     public void sort(Comparator<Card> comparator) {
         this.aCards.sort(comparator);
     }

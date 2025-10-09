@@ -79,6 +79,7 @@ public class DeckController {
      * Handles the event when the sort button is clicked.
      * Sorts the deck based on the selected sorting strategy.
      * Displays an error alert if no strategy is selected.
+     * @see RankFirstComparator
      */
     @FXML
     protected void onSortButtonClick() {
