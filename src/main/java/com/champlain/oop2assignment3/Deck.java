@@ -33,6 +33,18 @@ public class Deck extends CardCollection implements CardSource {
     }
 
     /**
+     * Returns the single instance of the Deck.
+     * Creates it if it doesn't exist.
+     *
+     * @return the singleton Deck instance
+     */
+    public static Deck getInstance() {
+        if (instance == null) {
+            instance = new Deck();
+        }
+        return instance;
+    }
+    /**
      * Shuffles the cards in this deck randomly.
      */
     public void shuffle() {
