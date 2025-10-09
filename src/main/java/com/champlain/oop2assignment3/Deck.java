@@ -44,6 +44,7 @@ public class Deck extends CardCollection implements CardSource {
         }
         return instance;
     }
+
     /**
      * Shuffles the cards in this deck randomly.
      */
