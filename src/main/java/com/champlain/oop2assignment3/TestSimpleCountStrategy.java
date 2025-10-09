@@ -32,11 +32,9 @@ public class TestSimpleCountStrategy {
     }
 
     // Test for null hand
-    @Test
+    @Test(expectedExceptions = NullPointerException.class)
     public void testCalculateScore_nullHand() {
         ScoringStrategy strategy = new SimpleCountStrategy();
-        int score = strategy.calculateScore(null);
-
-        assertEquals(0, score, "Score should be 0 for a null hand");
+        strategy.calculateScore(null); // Should throw NullPointerException
     }
 }

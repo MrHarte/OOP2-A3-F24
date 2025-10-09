@@ -5,7 +5,7 @@ public class SimpleCountStrategy implements ScoringStrategy{
     @Override
     public int calculateScore(CardCollection pCards) {
         if (pCards == null) {
-            return 0;
+            throw new NullPointerException("Card collection is null");
         }
         int score = 0;
         for (Card c : pCards) {
