@@ -4,9 +4,22 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
+/**
+ * Unit tests for {@link SimpleCountStrategy}.
+ * <p>
+ * These tests verify that the strategy correctly counts the number of cards
+ * in a hand and handles empty or null hands properly.
+ * </p>
+ *
+ * @author Rohina
+ * @see SimpleCountStrategy
+ */
+
 public class TestSimpleCountStrategy {
 
-    // Test for normal hand
+    /**
+     * Tests SimpleCountStrategy with a normal hand containing 3 cards.
+     */
     @Test
     public void testCalculateScore_normalHand() {
         Hand hand = new Hand();
@@ -20,7 +33,9 @@ public class TestSimpleCountStrategy {
         assertEquals(3, score, "Score should be 3 for a hand with 3 cards");
     }
 
-    // Test for empty hand
+    /**
+     * Tests SimpleCountStrategy with an empty hand.
+     */
     @Test
     public void testCalculateScore_emptyHand() {
         Hand hand = new Hand();
@@ -31,7 +46,13 @@ public class TestSimpleCountStrategy {
         assertEquals(0, score, "Score should be 0 for an empty hand");
     }
 
-    // Test for null hand
+    /**
+     * Tests SimpleCountStrategy with a null hand.
+     * <p>
+     * Expects a NullPointerException to be thrown. You can handle it in the test
+     * depending on your implementation of SimpleCountStrategy.
+     * </p>
+     */
     @Test(expectedExceptions = NullPointerException.class)
     public void testCalculateScore_nullHand() {
         ScoringStrategy strategy = new SimpleCountStrategy();
