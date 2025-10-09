@@ -121,12 +121,16 @@ public class DeckController {
         } else {
             switch (choice) {
                 case "Simple Count":
-                    // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Simple count...");
+                    // Feature 5: Score = number of cards in hand
+                    ScoringStrategy simpleStrategy = new SimpleCountStrategy();
+                    int simpleScore = simpleStrategy.calculateScore(this.aHand);
+                    this.aScoreLabel.setText(String.valueOf(simpleScore));
                     break;
                 case "Number Of Aces":
-                    // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Number of aces...");
+                    // Feature 6: Score = number of aces in hand
+                    ScoringStrategy aceStrategy = new NumberOfAcesStrategy();
+                    int aceCount = aceStrategy.calculateScore(this.aHand);
+                    this.aScoreLabel.setText(String.valueOf(aceCount));
                     break;
                 default:
                     this.aScoreLabel.setText("This should not happen! You messed up.");
