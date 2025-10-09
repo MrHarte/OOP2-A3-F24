@@ -80,6 +80,7 @@ public class DeckController {
      * Sorts the deck based on the selected sorting strategy.
      * Displays an error alert if no strategy is selected.
      * @see RankFirstComparator
+     * @see SuitFirstComparator
      */
     @FXML
     protected void onSortButtonClick() {
@@ -95,7 +96,7 @@ public class DeckController {
                     break;
                 case "Suit First":
                     // TODO: Replace the following line of code.
-                    this.aDeckTextArea.setText("This does not sort by suit first yet.");
+                    this.aDeck.sort(new SuitFirstComparator());
                     break;
                 default:
                     this.aDeckTextArea.setText("This should not happen! You messed up.");
