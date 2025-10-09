@@ -20,12 +20,11 @@ public class SimpleCountStrategy implements ScoringStrategy{
      * @return the number of cards in {@code pCards}
      * @implNote This strategy simply iterates over the card collection
      * and counts each card; it does not depend on rank or suit.
-     * @throws NullPointerException if {@code pCards} is null
      */
     @Override
     public int calculateScore(CardCollection pCards) {
         if (pCards == null) {
-            throw new NullPointerException("Card collection is null");
+            return 0;
         }
         int score = 0;
         for (Card c : pCards) {

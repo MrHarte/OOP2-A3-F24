@@ -5,7 +5,7 @@ public class NumberOfAcesStrategy implements ScoringStrategy {
     @Override
     public int calculateScore(CardCollection pCards) {
         if (pCards == null) {
-            throw new NullPointerException("Card collection is null");
+            return 0;
         }
 
         int aceCount = 0;

@@ -41,9 +41,11 @@ public class TestNumberOfAcesStrategy {
         assertEquals(score, 0, "Score should be 0 for an empty hand");
     }
 
-    @Test(expectedExceptions = NullPointerException.class)
+    @Test
     public void testCalculateScore_nullHand() {
         ScoringStrategy strategy = new NumberOfAcesStrategy();
-        strategy.calculateScore(null); // Should throw NullPointerException
+        int score = strategy.calculateScore(null);
+
+        assertEquals(score, 0, "Score should be 0 for a null hand");
     }
 }
