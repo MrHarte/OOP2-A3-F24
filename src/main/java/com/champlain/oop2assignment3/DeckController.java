@@ -80,6 +80,7 @@ public class DeckController {
      * Sorts the deck based on the selected sorting strategy.
      * Displays an error alert if no strategy is selected.
      * @see RankFirstComparator
+     * @see SuitFirstComparator
      */
     @FXML
     protected void onSortButtonClick() {
