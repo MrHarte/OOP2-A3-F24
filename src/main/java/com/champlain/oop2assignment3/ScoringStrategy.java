@@ -9,6 +9,7 @@ package com.champlain.oop2assignment3;
  *
  * @author Rohina
  * @see SimpleCountStrategy
+ * @see NumberOfAcesStrategy
  */
 
 public interface ScoringStrategy {
