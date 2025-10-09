@@ -53,4 +53,22 @@ public class Card {
     public String toString() {
         return this.getRank() + " of " + this.getSuit();
     }
+
+   
+    @Override
+    public boolean equals(Object obj) {
+        // Check for self-equality
+        if (this == obj) {
+            return true;
+        }
+
+        // Check if obj is an instance of Card
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        // Cast obj to Card and compare rank and suit
+        Card otherCard = (Card) obj;
+        return aRank == otherCard.aRank && aSuit == otherCard.aSuit;
+    }
 }
