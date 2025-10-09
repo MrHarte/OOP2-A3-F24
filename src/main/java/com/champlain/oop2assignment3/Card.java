@@ -53,4 +53,25 @@ public class Card {
     public String toString() {
         return this.getRank() + " of " + this.getSuit();
     }
+
+    /**
+     * Compares two objects by value instead of memory reference.
+     * @param obj the reference object with which to compare.
+     * @return
+     * True if both object references point to the same object.
+     * True if the Rank and Suit of both Card objects are the same.
+     * False if the object reference is null or if the object is not of the same class.
+     *
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Card otherCard = (Card) obj;
+        return this.aRank == otherCard.aRank && this.aSuit == otherCard.aSuit;
+    }
 }

@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Iterator;
 
 /**
  * Launches the test application when executed.
@@ -25,6 +26,8 @@ public class DeckApplication extends Application {
         pStage.setScene(scene);
         pStage.show();
     }
+
+
 
     /**
      * Main method executed on launch.
