@@ -14,7 +14,11 @@ import java.util.List;
  */
 public class Deck extends CardCollection implements CardSource {
 
+    /**
+     *  The single instance of the Deck object.
+     */
     private static Deck aDeck = null;
+
     /**
      * The list of cards in the deck.
      */
@@ -32,6 +36,11 @@ public class Deck extends CardCollection implements CardSource {
         }
     }
 
+    /**
+     * Returns the single instance of the Deck object.
+     *
+     * @return the single instance of the Deck object
+     */
     public static Deck getDeck()
     {
         if (aDeck == null)
