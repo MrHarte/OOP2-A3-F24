@@ -4,8 +4,21 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
+/**
+ * Unit tests for {@link NumberOfAcesStrategy}.
+ * <p>
+ * These tests verify that the strategy correctly counts the number of aces
+ * in a hand and handles empty or null hands properly.
+ * </p>
+ *
+ * @author Rohina
+ * @see NumberOfAcesStrategy
+ */
 public class TestNumberOfAcesStrategy {
 
+    /**
+     * Tests NumberOfAcesStrategy with a normal hand containing some aces.
+     */
     @Test
     public void testCalculateScore_normalHand() {
         Hand hand = new Hand();
@@ -19,6 +32,9 @@ public class TestNumberOfAcesStrategy {
         assertEquals(2, score, "Score should be 2 for a hand with 2 aces");
     }
 
+    /**
+     * Tests NumberOfAcesStrategy with a hand that has no aces.
+     */
     @Test
     public void testCalculateScore_noAces() {
         Hand hand = new Hand();
@@ -31,6 +47,9 @@ public class TestNumberOfAcesStrategy {
         assertEquals(0, score, "Score should be 0 for a hand with no aces");
     }
 
+    /**
+     * Tests NumberOfAcesStrategy with an empty hand.
+     */
     @Test
     public void testCalculateScore_emptyHand() {
         Hand hand = new Hand();
@@ -41,9 +60,14 @@ public class TestNumberOfAcesStrategy {
         assertEquals(score, 0, "Score should be 0 for an empty hand");
     }
 
-    @Test(expectedExceptions = NullPointerException.class)
+    /**
+     * Tests NumberOfAcesStrategy with a null hand.
+     */
+    @Test
     public void testCalculateScore_nullHand() {
         ScoringStrategy strategy = new NumberOfAcesStrategy();
-        strategy.calculateScore(null); // Should throw NullPointerException
+        int score = strategy.calculateScore(null);
+
+        assertEquals(score, 0, "Score should be 0 for a null hand");
     }
 }
