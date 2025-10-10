@@ -29,7 +29,7 @@ public class TestNumberOfAcesStrategy {
         ScoringStrategy strategy = new NumberOfAcesStrategy();
         int score = strategy.calculateScore(hand);
 
-        assertEquals(2, score, "Score should be 2 for a hand with 2 aces");
+        assertEquals(score, 2, "Score should be 2 for a hand with 2 aces");
     }
 
     /**
@@ -44,7 +44,7 @@ public class TestNumberOfAcesStrategy {
         ScoringStrategy strategy = new NumberOfAcesStrategy();
         int score = strategy.calculateScore(hand);
 
-        assertEquals(0, score, "Score should be 0 for a hand with no aces");
+        assertEquals(score, 0, "Score should be 0 for a hand with no aces");
     }
 
     /**
