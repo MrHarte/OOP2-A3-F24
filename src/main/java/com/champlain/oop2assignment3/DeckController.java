@@ -90,16 +90,20 @@ public class DeckController {
             switch (choice) {
                 case "Rank First":
                     // TODO: Replace the following line of code.
-                    this.aDeckTextArea.setText("This does not sort by rank first yet.");
+                    // RankFirstComparator Feature
+                    this.aDeck.sort(new RankFirstComparator());
                     break;
                 case "Suit First":
                     // TODO: Replace the following line of code.
-                    this.aDeckTextArea.setText("This does not sort by suit first yet.");
+                    // SuitFirstComparator Feature
+                    this.aDeck.sort(new SuitFirstComparator());
                     break;
                 default:
                     this.aDeckTextArea.setText("This should not happen! You messed up.");
                     break;
             }
+            // Updates the UI to show the sorted cards.
+            this.displayCardCollections();
         }
     }
 
@@ -117,12 +121,16 @@ public class DeckController {
         } else {
             switch (choice) {
                 case "Simple Count":
-                    // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Simple count...");
+                    // Feature 5: Score = number of cards in hand
+                    ScoringStrategy simpleStrategy = new SimpleCountStrategy();
+                    int simpleScore = simpleStrategy.calculateScore(this.aHand);
+                    this.aScoreLabel.setText(String.valueOf(simpleScore));
                     break;
                 case "Number Of Aces":
-                    // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Number of aces...");
+                    // Feature 6: Score = number of aces in hand
+                    ScoringStrategy aceStrategy = new NumberOfAcesStrategy();
+                    int aceCount = aceStrategy.calculateScore(this.aHand);
+                    this.aScoreLabel.setText(String.valueOf(aceCount));
                     break;
                 default:
                     this.aScoreLabel.setText("This should not happen! You messed up.");
