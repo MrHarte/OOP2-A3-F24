@@ -50,6 +50,8 @@ public class Card {
      *
      * @param obj the object to compare with
      * @return true if the cards have the same rank and suit, false otherwise
+     * @see #hashCode()
+     * @implNote This method overrides {@link Object#equals(Object)} and ensures consistency with {@code hashCode()}.
      */
     @Override
     public boolean equals(Object obj) {
@@ -64,6 +66,8 @@ public class Card {
      * This ensures that equal cards have the same hash code.
      *
      * @return the hash code of the card
+     *  @see #equals(Object)
+     *  @implNote This method uses a standard hash combination formula: {@code 31 * aRank.hashCode() + aSuit.hashCode()}.
      */
     @Override
     public int hashCode() {
