@@ -23,11 +23,11 @@ public class SuitFirstComparator implements Comparator<Card> {
      */
     @Override
     public int compare(Card card1, Card card2) {
-        int compareSuit = card2.getSuit().ordinal() - card1.getSuit().ordinal();
+        int compareSuit = card1.getSuit().ordinal() - card2.getSuit().ordinal();
 
         if (compareSuit != 0) {
             return compareSuit;
         }
-        return card2.getRank().ordinal() - card1.getRank().ordinal();
+        return card1.getRank().ordinal() - card2.getRank().ordinal();
     }
 }

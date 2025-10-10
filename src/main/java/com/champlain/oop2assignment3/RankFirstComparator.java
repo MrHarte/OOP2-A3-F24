@@ -22,11 +22,11 @@ public class RankFirstComparator implements Comparator<Card> {
      */
     @Override
     public int compare(Card card1, Card card2) {
-        int compareRank = card2.getRank().ordinal() - card1.getRank().ordinal();
+        int compareRank = card1.getRank().ordinal() - card2.getRank().ordinal();
 
         if (compareRank != 0) {
             return compareRank;
         }
-        return card2.getSuit().ordinal() - card1.getSuit().ordinal();
+        return card1.getSuit().ordinal() - card2.getSuit().ordinal();
     }
 }

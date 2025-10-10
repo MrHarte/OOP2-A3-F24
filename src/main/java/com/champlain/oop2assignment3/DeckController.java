@@ -93,10 +93,12 @@ public class DeckController{
                 case "Rank First":
                     // TODO: Replace the following line of code.
                     this.aDeck.sort(new RankFirstComparator());
+                    this.displayCardCollections();
                     break;
                 case "Suit First":
                     // TODO: Replace the following line of code.
                     this.aDeck.sort(new SuitFirstComparator());
+                    this.displayCardCollections();
                     break;
                 default:
                     this.aDeckTextArea.setText("This should not happen! You messed up.");
