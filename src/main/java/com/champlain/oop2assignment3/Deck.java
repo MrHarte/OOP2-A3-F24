@@ -13,7 +13,9 @@ import java.util.List;
  * </p>
  */
 public class Deck extends CardCollection implements CardSource {
-    
+    /**
+     * The single instance of the Deck (Singleton pattern).
+     */
     private static Deck instance;
 
     /**
