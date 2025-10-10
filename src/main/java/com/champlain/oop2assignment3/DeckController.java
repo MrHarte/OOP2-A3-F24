@@ -14,7 +14,7 @@ import javafx.scene.control.TextArea;
  * the current state of the deck and hand.
  * </p>
  */
-public class DeckController {
+public class DeckController{
     /**
      * TextArea for displaying the current state of the deck.
      */
@@ -48,7 +48,7 @@ public class DeckController {
     /**
      * The deck of cards being managed by this controller.
      */
-    private final Deck aDeck = new Deck();
+    private final Deck aDeck = Deck.getInstance();
 
     /**
      * The hand of cards being managed by this controller.
@@ -79,6 +79,8 @@ public class DeckController {
      * Handles the event when the sort button is clicked.
      * Sorts the deck based on the selected sorting strategy.
      * Displays an error alert if no strategy is selected.
+     * @see RankFirstComparator
+     * @see SuitFirstComparator
      */
     @FXML
     protected void onSortButtonClick() {
@@ -90,11 +92,13 @@ public class DeckController {
             switch (choice) {
                 case "Rank First":
                     // TODO: Replace the following line of code.
-                    this.aDeckTextArea.setText("This does not sort by rank first yet.");
+                    this.aDeck.sort(new RankFirstComparator());
+                    this.displayCardCollections();
                     break;
                 case "Suit First":
                     // TODO: Replace the following line of code.
-                    this.aDeckTextArea.setText("This does not sort by suit first yet.");
+                    this.aDeck.sort(new SuitFirstComparator());
+                    this.displayCardCollections();
                     break;
                 default:
                     this.aDeckTextArea.setText("This should not happen! You messed up.");
@@ -111,18 +115,19 @@ public class DeckController {
     @FXML
     protected void onScoreButtonClick() {
         String choice = this.aScoreStrategyChoiceBox.getValue();
+
         if (choice == null) {
             Alert selectionErrorAlert = new Alert(Alert.AlertType.ERROR, "Please choose a scoring strategy first.");
             selectionErrorAlert.showAndWait();
         } else {
             switch (choice) {
                 case "Simple Count":
-                    // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Simple count...");
+                    SimpleCountStrategy score = new SimpleCountStrategy();
+                    this.aScoreLabel.setText(String.valueOf(score.calculateScore(this.aHand)));
                     break;
                 case "Number Of Aces":
-                    // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Number of aces...");
+                    NumberOfAcesStrategy numberOfAces = new NumberOfAcesStrategy();
+                    this.aScoreLabel.setText(String.valueOf(numberOfAces.calculateScore(this.aHand)));
                     break;
                 default:
                     this.aScoreLabel.setText("This should not happen! You messed up.");
