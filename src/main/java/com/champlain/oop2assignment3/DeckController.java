@@ -14,7 +14,7 @@ import javafx.scene.control.TextArea;
  * the current state of the deck and hand.
  * </p>
  */
-public class DeckController {
+public class DeckController{
     /**
      * TextArea for displaying the current state of the deck.
      */
@@ -113,18 +113,19 @@ public class DeckController {
     @FXML
     protected void onScoreButtonClick() {
         String choice = this.aScoreStrategyChoiceBox.getValue();
+
         if (choice == null) {
             Alert selectionErrorAlert = new Alert(Alert.AlertType.ERROR, "Please choose a scoring strategy first.");
             selectionErrorAlert.showAndWait();
         } else {
             switch (choice) {
                 case "Simple Count":
-                    // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Simple count...");
+                    SimpleCountStrategy score = new SimpleCountStrategy();
+                    this.aScoreLabel.setText(String.valueOf(score.calculateScore(this.aHand)));
                     break;
                 case "Number Of Aces":
-                    // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Number of aces...");
+                    NumberOfAcesStrategy numberOfAces = new NumberOfAcesStrategy();
+                    this.aScoreLabel.setText(String.valueOf(numberOfAces.calculateScore(this.aHand)));
                     break;
                 default:
                     this.aScoreLabel.setText("This should not happen! You messed up.");
