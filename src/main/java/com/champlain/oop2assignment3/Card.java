@@ -54,7 +54,14 @@ public class Card {
         return this.getRank() + " of " + this.getSuit();
     }
 
-    
+    /**
+     * Compares this card to another object for equality.
+     * Two cards are considered equal if they have the same rank and suit.
+     * This method enables fraud detection by identifying duplicate cards.
+     *
+     * @param obj the object to compare with this card
+     * @return true if the object is a Card with the same rank and suit, false otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
