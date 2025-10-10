@@ -53,4 +53,32 @@ public class Card {
     public String toString() {
         return this.getRank() + " of " + this.getSuit();
     }
+
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Card other = (Card) obj;
+        return this.aRank == other.aRank && this.aSuit == other.aSuit;
+    }
+
+    /**
+     * Returns a hash code value for this card.
+     * This method is overridden to maintain the contract with equals():
+     * if two cards are equal, they must have the same hash code.
+     *
+     * @return a hash code value for this card
+     */
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + (this.aSuit != null ? this.aSuit.hashCode() : 0);
+        result = 31 * result + (this.aRank != null ? this.aRank.hashCode() : 0);
+        return result;
+    }
 }
