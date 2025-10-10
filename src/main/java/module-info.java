@@ -5,6 +5,7 @@
 module com.champlain.oop2assignment3 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires org.testng;
 
 
     opens com.champlain.oop2assignment3 to javafx.fxml;
