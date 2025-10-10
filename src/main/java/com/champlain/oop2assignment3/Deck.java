@@ -23,7 +23,7 @@ public class Deck extends CardCollection implements CardSource {
     /**
      * Constructs a new Deck containing all standard playing cards.
      * The deck is initialized with one of each rank and suit combination.
-     * Only one deck can exits
+     * Only one deck can exist
      */
     public Deck() {
         for (Rank currentRank : Rank.values()) {
