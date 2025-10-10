@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Comparator;
 
 /**
  * Represents a deck of playing cards using the Singleton design pattern.
@@ -38,14 +37,13 @@ public class Deck extends CardCollection implements CardSource {
      * @see Rank
      * @see Suit
      */
-    private Deck() {
+    Deck() {
         for (Rank currentRank : Rank.values()) {
             for (Suit currentSuit : Suit.values()) {
                 this.aCards.add(new Card(currentRank, currentSuit));
             }
         }
     }
-
 
     /**
      * Returns the single instance of the Deck class.
@@ -125,10 +123,4 @@ public class Deck extends CardCollection implements CardSource {
     public Iterator<Card> iterator() {
         return this.aCards.iterator();
     }
-
-    /** Sorts the deck in-place using the provided strategy. */
-    public void sort(Comparator<Card> strategy) {
-        this.aCards.sort(strategy);
-    }
 }
-
