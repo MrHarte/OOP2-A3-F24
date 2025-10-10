@@ -37,6 +37,9 @@ public class Deck extends CardCollection implements CardSource {
      * Creates it if it doesn't exist.
      *
      * @return the singleton Deck instance
+     * @see Deck#Deck()
+     * @implNote This method implements the Singleton pattern to ensure only one instance of {@code Deck} exists.
+     * @since 1.0
      */
     public static Deck getInstance() {
         if (instance == null) {
