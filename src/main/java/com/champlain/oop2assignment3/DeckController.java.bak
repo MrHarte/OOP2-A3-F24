@@ -5,8 +5,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import java.util.ArrayList;
-import java.util.Comparator;
 
 /**
  * Controller class for managing the deck and hand of cards in the user interface.
@@ -67,27 +65,10 @@ public class DeckController {
         this.displayCardCollections();
         this.aSortStrategyChoiceBox.getItems().addAll("Rank First", "Suit First");
         this.aScoreStrategyChoiceBox.getItems().addAll("Simple Count", "Number Of Aces");
-        this.testSingleton();
-		this.testEquals();
-        this.testComparator("RankFirstComparator", new RankFirstComparator());
-        this.testComparator("SuitFirstComparator", new SuitFirstComparator());
-
+<<<<<<< HEAD
+        this.testEquals();
     }
-    
-    /**
-     * Upon initialization, the system will create two decks and test if they return the same instance.
-     */
-    public void testSingleton() {
-        Deck deck1 = Deck.getInstance();
-        Deck deck2 = Deck.getInstance();
 
-        if (deck1 == deck2) {
-            System.out.println("PASS: Both references point to the same instance.");
-        } else {
-            System.out.println("FAIL: Different instances detected.");
-        }
-    }
-        
     /**
      * Upon initialization the system will test the equality of three cards.
      * The first comparison should return true, the second false.
@@ -99,34 +80,26 @@ public class DeckController {
 
         System.out.println("card1 equals card2: " + card1.equals(card2)); // should print true
         System.out.println("card1 equals card3: " + card1.equals(card3)); // should print false
+=======
+
+        this.testSingleton();
     }
+
     /**
-     * Tests a given Comparator by sorting and displaying a sample list of cards.
-     *
-     * @param name the name of the comparator being tested
-     * @param comparator the Comparator instance (RankFirstComparator or SuitFirstComparator)
+     * Upon initialization, the system will create two decks and test if they return the same instance.
      */
-    public void testComparator(String name, Comparator<Card> comparator) {
-        ArrayList<Card> cards = new ArrayList<>();
-        cards.add(new Card(Rank.ACE, Suit.SPADES));
-        cards.add(new Card(Rank.KING, Suit.CLUBS));
-        cards.add(new Card(Rank.QUEEN, Suit.DIAMONDS));
-        cards.add(new Card(Rank.TEN, Suit.CLUBS));
+    public void testSingleton(){
+        Deck deck1 = Deck.getInstance();
+        Deck deck2 = Deck.getInstance();
 
-        System.out.println("\nBefore sorting (" + name + "):");
-        for (Card c : cards) {
-            System.out.println(c);
+        if (deck1 == deck2) {
+            System.out.println("PASS: Both references point to the same instance.");
+        } else {
+            System.out.println("FAIL: Different instances detected.");
         }
 
-        cards.sort(comparator);
-
-        System.out.println("\nAfter sorting (" + name + "):");
-        for (Card c : cards) {
-            System.out.println(c);
-        }
+>>>>>>> feature/SingletonImplementation
     }
-
-
 
     /**
      * Handles the event when the shuffle button is clicked.
@@ -138,6 +111,33 @@ public class DeckController {
         this.displayCardCollections();
     }
 
+    /**
+     * Handles the event when the sort button is clicked.
+     * Sorts the deck based on the selected sorting strategy.
+     * Displays an error alert if no strategy is selected.
+     */
+    @FXML
+    protected void onSortButtonClick() {
+        String choice = this.aSortStrategyChoiceBox.getValue();
+        if (choice == null) {
+            Alert selectionErrorAlert = new Alert(Alert.AlertType.ERROR, "Please choose a sorting strategy first.");
+            selectionErrorAlert.showAndWait();
+        } else {
+            switch (choice) {
+                case "Rank First":
+                    // TODO: Replace the following line of code.
+                    this.aDeckTextArea.setText("This does not sort by rank first yet.");
+                    break;
+                case "Suit First":
+                    // TODO: Replace the following line of code.
+                    this.aDeckTextArea.setText("This does not sort by suit first yet.");
+                    break;
+                default:
+                    this.aDeckTextArea.setText("This should not happen! You messed up.");
+                    break;
+            }
+        }
+    }
 
     /**
      * Handles the event when the score button is clicked.
@@ -152,18 +152,16 @@ public class DeckController {
             selectionErrorAlert.showAndWait();
         } else {
             switch (choice) {
-                case "Rank First":
-                     // TODO: Replace the following line of code.
-                    this.aHand.sort(new RankFirstComparator());
-                    this.displayCardCollections();
-                    break;
-                case "Suit First":
+                case "Simple Count":
                     // TODO: Replace the following line of code.
-                    this.aHand.sort(new SuitFirstComparator());
-                    this.displayCardCollections(); // refresh the display
+                    this.aScoreLabel.setText("Simple count...");
+                    break;
+                case "Number Of Aces":
+                    // TODO: Replace the following line of code.
+                    this.aScoreLabel.setText("Number of aces...");
                     break;
                 default:
-                    this.aDeckTextArea.setText("This should not happen! You messed up.");
+                    this.aScoreLabel.setText("This should not happen! You messed up.");
                     break;
             }
         }

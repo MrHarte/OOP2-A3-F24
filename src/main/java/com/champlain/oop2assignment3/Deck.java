@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Comparator;
 
 /**
  * Represents a deck of playing cards.
@@ -17,12 +18,18 @@ public class Deck extends CardCollection implements CardSource {
      * The list of cards in the deck.
      */
     private final List<Card> aCards = new ArrayList<>();
+    /**
+     * The single instance of the deck, implementing singleton design pattern.
+     *
+     * @see <a href="https://refactoring.guru/design-patterns/singleton">...</a>
+     */
+    private static Deck instance;
 
     /**
      * Constructs a new Deck containing all standard playing cards.
      * The deck is initialized with one of each rank and suit combination.
      */
-    public Deck() {
+    private Deck() {
         for (Rank currentRank : Rank.values()) {
             for (Suit currentSuit : Suit.values()) {
                 this.aCards.add(new Card(currentRank, currentSuit));
@@ -30,6 +37,31 @@ public class Deck extends CardCollection implements CardSource {
         }
     }
 
+    /**
+     * Creates a single instance of the deck if it isn't already created.
+     *
+     * @return the instance of the deck
+     */
+    public static Deck getInstance() {
+        if(instance == null) {
+            instance = new Deck();
+        }
+        return instance;
+    }
+
+    /**
+     * Sorts the cards in this deck using the provided comparator.
+     * <p>
+     * This method allows for different sorting strategies, such as
+     * sorting by rank first or suit first, depending on the comparator
+     * passed as an argument.
+     * </p>
+     *
+     * @param comparator the comparator used to define the sorting order
+     */
+    public void sort(Comparator<Card> comparator) {
+        this.aCards.sort(comparator);
+    }
     /**
      * Shuffles the cards in this deck randomly.
      */
@@ -57,3 +89,4 @@ public class Deck extends CardCollection implements CardSource {
         return this.aCards.iterator();
     }
 }
+
